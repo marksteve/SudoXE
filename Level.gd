@@ -12,7 +12,7 @@ func generate_row(y: int):
 	set_cell_item(-6, 0, y, 1)
 	set_cell_item(5, 0, y, 1)
 	if randi() % int(max(20 - chunks, 1)) == 1:
-		var x = (randi() % 11) - 5
+		var x = (randi() % 10) - 5
 		set_cell_item(x, 0, y, 0)
 
 func generate_chunk(chunk: int):
