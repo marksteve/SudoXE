@@ -59,7 +59,7 @@ font_data = ExtResource( 5 )
 [node name="Main" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 current = true
 script = ExtResource( 2 )
 
