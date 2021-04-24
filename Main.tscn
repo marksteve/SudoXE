@@ -131,8 +131,6 @@ __meta__ = {
 [node name="UI" type="MarginContainer" parent="."]
 anchor_right = 0.95
 anchor_bottom = 0.95
-margin_left = -96.0
-margin_top = -44.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 __meta__ = {
@@ -140,10 +138,10 @@ __meta__ = {
 }
 
 [node name="Depth" type="Label" parent="UI"]
-margin_left = 882.0
-margin_top = 1025.0
-margin_right = 1008.0
-margin_bottom = 1070.0
+margin_left = 786.0
+margin_top = 981.0
+margin_right = 912.0
+margin_bottom = 1026.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 custom_fonts/font = SubResource( 7 )
