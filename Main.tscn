@@ -207,3 +207,4 @@ align = 2
 valign = 2
 
 [connection signal="body_entered" from="Ship" to="Ship" method="_on_Ship_body_entered"]
+[connection signal="destroyed" from="Ship" to="Camera" method="_on_Ship_destroyed"]

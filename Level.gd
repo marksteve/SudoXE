@@ -26,5 +26,5 @@ func _physics_process(delta):
 		generate_chunk(chunks)
 
 func _process(delta):
-	if not ship.destroyed:
+	if not ship.is_destroyed:
 		ui_depth.text = "%.3f m" % ship.translation.y
