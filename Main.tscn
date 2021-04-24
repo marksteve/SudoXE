@@ -74,19 +74,6 @@ shape = SubResource( 1 )
 
 [node name="CSGBox" type="CSGBox" parent="Ship"]
 
-[node name="RightRocket" type="CSGCylinder" parent="Ship"]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.25, 0.1, 0 )
-radius = 0.5
-height = 0.5
-
-[node name="Particles" type="Particles" parent="Ship/RightRocket"]
-emitting = false
-lifetime = 0.5
-randomness = 1.0
-draw_order = 2
-process_material = SubResource( 2 )
-draw_pass_1 = SubResource( 4 )
-
 [node name="TopRocket" type="CSGCylinder" parent="Ship"]
 transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1.25, 0 )
 radius = 0.5
@@ -100,12 +87,12 @@ draw_order = 2
 process_material = SubResource( 2 )
 draw_pass_1 = SubResource( 4 )
 
-[node name="LeftRocket" type="CSGCylinder" parent="Ship"]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.25, 0.1, 0 )
+[node name="BottomRocket" type="CSGCylinder" parent="Ship"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0 )
 radius = 0.5
 height = 0.5
 
-[node name="Particles" type="Particles" parent="Ship/LeftRocket"]
+[node name="Particles" type="Particles" parent="Ship/BottomRocket"]
 emitting = false
 lifetime = 0.5
 randomness = 1.0
@@ -113,12 +100,25 @@ draw_order = 2
 process_material = SubResource( 2 )
 draw_pass_1 = SubResource( 4 )
 
-[node name="BottomRocket" type="CSGCylinder" parent="Ship"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0 )
+[node name="RightRocket" type="CSGCylinder" parent="Ship"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.25, 0.1, 0 )
 radius = 0.5
 height = 0.5
 
-[node name="Particles" type="Particles" parent="Ship/BottomRocket"]
+[node name="Particles" type="Particles" parent="Ship/RightRocket"]
+emitting = false
+lifetime = 0.5
+randomness = 1.0
+draw_order = 2
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="LeftRocket" type="CSGCylinder" parent="Ship"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.25, 0.1, 0 )
+radius = 0.5
+height = 0.5
+
+[node name="Particles" type="Particles" parent="Ship/LeftRocket"]
 emitting = false
 lifetime = 0.5
 randomness = 1.0

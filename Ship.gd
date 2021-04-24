@@ -3,9 +3,13 @@ extends RigidBody
 signal destroyed
 
 const BOOST = 1.0
+onready var top_rocket = $TopRocket
 onready var top_rocket_particles = $TopRocket/Particles
+onready var bottom_rocket = $BottomRocket
 onready var bottom_rocket_particles = $BottomRocket/Particles
+onready var right_rocket = $RightRocket
 onready var right_rocket_particles = $RightRocket/Particles
+onready var left_rocket = $LeftRocket
 onready var left_rocket_particles = $LeftRocket/Particles
 var is_destroyed = false
 
@@ -17,14 +21,14 @@ func _physics_process(delta):
 		return
 		
 	if Input.is_action_pressed("ui_up"):
-		apply_impulse(apply_rotation(Vector3(0, -1.25, 0)), apply_rotation(Vector3(0, -BOOST, 0)))
+		apply_impulse(apply_rotation(top_rocket.translation), apply_rotation(Vector3(0, -BOOST, 0)))
 	elif Input.is_action_pressed("ui_down"):
-		apply_impulse(apply_rotation(Vector3(0, 1.25, 0)), apply_rotation(Vector3(0, BOOST, 0)))
+		apply_impulse(apply_rotation(bottom_rocket.translation), apply_rotation(Vector3(0, BOOST, 0)))
 		
 	if Input.is_action_pressed("ui_right"):
-		apply_impulse(apply_rotation(Vector3(1.25, 0.1, 0)), apply_rotation(Vector3(-BOOST, 0, 0)))
+		apply_impulse(apply_rotation(right_rocket.translation), apply_rotation(Vector3(-BOOST, 0, 0)))
 	elif Input.is_action_pressed("ui_left"):
-		apply_impulse(apply_rotation(Vector3(-1.25, 0.1, 0)), apply_rotation(Vector3(BOOST, 0, 0)))
+		apply_impulse(apply_rotation(left_rocket.translation), apply_rotation(Vector3(BOOST, 0, 0)))
 
 	top_rocket_particles.emitting = Input.is_action_pressed("ui_up")
 	bottom_rocket_particles.emitting = Input.is_action_pressed("ui_down")
