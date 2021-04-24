@@ -54,6 +54,7 @@ func _on_Ship_body_entered(body):
 
 	emit_signal("destroyed")
 	is_destroyed = true
+	
 	for particles in [
 		top_rocket_particles,
 		bottom_rocket_particles,
@@ -62,3 +63,34 @@ func _on_Ship_body_entered(body):
 	]:
 		particles.emitting = true
 		particles.process_material.spread = 180
+		
+	top_rocket_light.light_energy = 16
+	bottom_rocket_light.light_energy = 16
+	right_rocket_light.light_energy = 16
+	left_rocket_light.light_energy = 16
+		
+func _on_UI_screen_changed(screen):
+	if screen == "title":
+		self.translation = Vector3(0, 0, 0)
+		self.rotation = Vector3(0, 0, 0)
+		self.linear_velocity = Vector3(0, 0, 0)
+		self.angular_velocity = Vector3(0, 0, 0)
+		
+		is_destroyed = false
+		
+		for particles in [
+			top_rocket_particles,
+			bottom_rocket_particles,
+			right_rocket_particles,
+			left_rocket_particles,
+		]:
+			particles.emitting = false
+			particles.process_material.spread = 30
+			# Reset particles
+			particles.amount = 0
+			particles.amount = 8
+			
+		top_rocket_light.light_energy = 0
+		bottom_rocket_light.light_energy = 0
+		right_rocket_light.light_energy = 0
+		left_rocket_light.light_energy = 0

@@ -28,3 +28,8 @@ func _process(delta):
 
 func _on_Ship_destroyed():
 	shake_amount = 1.0
+
+func _on_UI_screen_changed(screen):
+	if screen == "title":
+		self.translation.z = 5
+		self.translation.y = 0

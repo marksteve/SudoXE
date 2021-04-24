@@ -11,13 +11,13 @@
 
 [sub_resource type="BoxShape" id=1]
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0.499489 ), 0.0, 0.0, 0, 0, Vector2( 0.690789, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=4]
 direction = Vector3( 0, -1, 0 )
 spread = 30.0
 gravity = Vector3( 0, 0, 0 )
@@ -28,9 +28,9 @@ angular_velocity_random = 1.0
 angle = 360.0
 angle_random = 1.0
 scale_random = 0.8
-scale_curve = SubResource( 6 )
+scale_curve = SubResource( 3 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
@@ -41,8 +41,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 albedo_color = Color( 1, 0.611765, 0, 1 )
 
-[sub_resource type="QuadMesh" id=4]
-material = SubResource( 3 )
+[sub_resource type="QuadMesh" id=6]
+material = SubResource( 5 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 96
@@ -86,12 +86,12 @@ emitting = false
 lifetime = 0.5
 randomness = 1.0
 draw_order = 2
-process_material = SubResource( 2 )
-draw_pass_1 = SubResource( 4 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
 
 [node name="SpotLight" type="SpotLight" parent="Ship/TopRocket"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
-light_color = Color( 1, 0.560784, 0, 1 )
+light_color = Color( 1, 0.768627, 0.478431, 1 )
 light_energy = 0.0
 light_specular = 1.0
 
@@ -105,12 +105,12 @@ emitting = false
 lifetime = 0.5
 randomness = 1.0
 draw_order = 2
-process_material = SubResource( 2 )
-draw_pass_1 = SubResource( 4 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
 
 [node name="SpotLight" type="SpotLight" parent="Ship/BottomRocket"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
-light_color = Color( 1, 0.560784, 0, 1 )
+light_color = Color( 1, 0.768627, 0.478431, 1 )
 light_energy = 0.0
 light_specular = 1.0
 
@@ -124,12 +124,12 @@ emitting = false
 lifetime = 0.5
 randomness = 1.0
 draw_order = 2
-process_material = SubResource( 2 )
-draw_pass_1 = SubResource( 4 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
 
 [node name="SpotLight" type="SpotLight" parent="Ship/RightRocket"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
-light_color = Color( 1, 0.560784, 0, 1 )
+light_color = Color( 1, 0.768627, 0.478431, 1 )
 light_energy = 0.0
 light_specular = 1.0
 
@@ -143,12 +143,12 @@ emitting = false
 lifetime = 0.5
 randomness = 1.0
 draw_order = 2
-process_material = SubResource( 2 )
-draw_pass_1 = SubResource( 4 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
 
 [node name="SpotLight" type="SpotLight" parent="Ship/LeftRocket"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
-light_color = Color( 1, 0.560784, 0, 1 )
+light_color = Color( 1, 0.768627, 0.478431, 1 )
 light_energy = 0.0
 light_specular = 1.0
 
@@ -226,35 +226,23 @@ margin_right = 864.0
 margin_bottom = 972.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOver"]
-margin_left = 54.0
-margin_top = 324.0
-margin_right = 810.0
-margin_bottom = 648.0
+margin_left = 81.0
+margin_top = 348.0
+margin_right = 783.0
+margin_bottom = 623.0
 
 [node name="Title" type="Label" parent="UI/GameOver/VBoxContainer"]
-margin_right = 756.0
+margin_right = 702.0
 margin_bottom = 134.0
 custom_fonts/font = SubResource( 7 )
-text = "MISSION FAILED"
+text = "ESCAPE FAILED"
 align = 1
 valign = 1
-
-[node name="SubTitle" type="Label" parent="UI/GameOver/VBoxContainer"]
-margin_top = 138.0
-margin_right = 756.0
-margin_bottom = 183.0
-custom_fonts/font = SubResource( 8 )
-text = "THERE WERE NO SURVIVORS"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Instructions" type="Label" parent="UI/GameOver/VBoxContainer"]
-margin_top = 187.0
-margin_right = 756.0
-margin_bottom = 324.0
+margin_top = 138.0
+margin_right = 702.0
+margin_bottom = 275.0
 custom_fonts/font = SubResource( 9 )
 text = "
 Press SPACE to try again"
@@ -280,3 +268,6 @@ valign = 2
 [connection signal="body_entered" from="Ship" to="Ship" method="_on_Ship_body_entered"]
 [connection signal="destroyed" from="Ship" to="UI" method="_on_Ship_destroyed"]
 [connection signal="destroyed" from="Ship" to="Camera" method="_on_Ship_destroyed"]
+[connection signal="screen_changed" from="UI" to="Ship" method="_on_UI_screen_changed"]
+[connection signal="screen_changed" from="UI" to="Camera" method="_on_UI_screen_changed"]
+[connection signal="screen_changed" from="UI" to="Level" method="_on_UI_screen_changed"]

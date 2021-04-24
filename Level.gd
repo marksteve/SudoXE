@@ -30,3 +30,9 @@ func _physics_process(delta):
 func _process(delta):
 	if not ship.is_destroyed:
 		ui_depth.text = "%.3f m" % ship.translation.y
+
+func _on_UI_screen_changed(screen):
+	if screen == "title":
+		clear()
+		chunks = 1
+		generate_chunk(chunks)
