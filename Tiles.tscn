@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.615686, 0.611765, 0.584314, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 4, 4, 4 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -2, 2, 2, 2, 2, -2, 2, 2, 2, -2, 2, -2, -2, -2, 2, 2, -2, -2, 2, -2, 2, -2, -2, -2, 2, 2, 2, -2, 2, -2, 2, 2, -2, -2, 2, 2, 2, -2, 2, -2, -2, -2, 2, -2, -2, -2, -2, 2, 2, 2, 2, -2, -2, 2, -2, 2, 2, 2, -2, 2, 2, 2, -2, -2, -2, -2, -2, 2, -2, 2, -2, -2 )
+
+[node name="Tiles" type="Spatial"]
+
+[node name="Dirt" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Dirt"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Dirt/StaticBody"]
+shape = SubResource( 3 )
