@@ -3,6 +3,7 @@ extends GridMap
 const TILE_SIZE = 4
 const CHUNK_SIZE = 16
 onready var ship = $"../Ship"
+onready var ui_depth = $"../UI/Depth"
 var chunks = 1
 
 func generate_row(y: int):
@@ -23,3 +24,7 @@ func _physics_process(delta):
 	if -ship.translation.y / TILE_SIZE > (chunks - 0.5) * CHUNK_SIZE:
 		chunks += 1
 		generate_chunk(chunks)
+
+func _process(delta):
+	if not ship.destroyed:
+		ui_depth.text = "%.3f m" % ship.translation.y
