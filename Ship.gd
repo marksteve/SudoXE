@@ -15,9 +15,9 @@ func _physics_process(delta):
 		return
 		
 	if Input.is_action_pressed("ui_up"):
-		apply_impulse(apply_rotation(Vector3(0.1, -1.25, 0)), apply_rotation(Vector3(0, -BOOST, 0)))
+		apply_impulse(apply_rotation(Vector3(0, -1.25, 0)), apply_rotation(Vector3(0, -BOOST, 0)))
 	elif Input.is_action_pressed("ui_down"):
-		apply_impulse(apply_rotation(Vector3(0.1, 1.25, 0)), apply_rotation(Vector3(0, BOOST, 0)))
+		apply_impulse(apply_rotation(Vector3(0, 1.25, 0)), apply_rotation(Vector3(0, BOOST, 0)))
 		
 	if Input.is_action_pressed("ui_right"):
 		apply_impulse(apply_rotation(Vector3(1.25, 0.1, 0)), apply_rotation(Vector3(-BOOST, 0, 0)))
