@@ -20,7 +20,7 @@ func _ready():
 	noise.octaves = 2
 
 func _process(delta):
-	self.translation.y = ship.translation.y
+	self.translation.y = lerp(self.translation.y, ship.translation.y - 10, 0.2)
 	if shake_amount > 0.0:
 		shake(shake_amount)
 		shake_amount = max(shake_amount - shake_decay * delta, 0)
