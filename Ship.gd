@@ -24,18 +24,28 @@ func _physics_process(delta):
 	if is_destroyed:
 		return
 		
+	var boost_multiplier = 10.0 if Input.is_action_pressed("ui_accept") else 1.0
+		
 	if Input.is_action_pressed("ui_up"):
-		apply_impulse(apply_rotation(top_rocket.translation), apply_rotation(Vector3(0, -BOOST, 0)))
+		apply_impulse(
+			apply_rotation(top_rocket.translation),
+			apply_rotation(Vector3(0, -BOOST * boost_multiplier, 0)))
 		top_rocket_light.light_energy = lerp(top_rocket_light.light_energy, 16, 0.5)
 	elif Input.is_action_pressed("ui_down"):
-		apply_impulse(apply_rotation(bottom_rocket.translation), apply_rotation(Vector3(0, BOOST, 0)))
+		apply_impulse(
+			apply_rotation(bottom_rocket.translation),
+			apply_rotation(Vector3(0, BOOST * boost_multiplier, 0)))
 		bottom_rocket_light.light_energy = lerp(bottom_rocket_light.light_energy, 16, 0.5)
 		
 	if Input.is_action_pressed("ui_right"):
-		apply_impulse(apply_rotation(right_rocket.translation), apply_rotation(Vector3(-BOOST, 0, 0)))
+		apply_impulse(
+			apply_rotation(right_rocket.translation),
+			apply_rotation(Vector3(-BOOST * boost_multiplier, 0, 0)))
 		right_rocket_light.light_energy = lerp(right_rocket_light.light_energy, 16, 0.5)
 	elif Input.is_action_pressed("ui_left"):
-		apply_impulse(apply_rotation(left_rocket.translation), apply_rotation(Vector3(BOOST, 0, 0)))
+		apply_impulse(
+			apply_rotation(left_rocket.translation),
+			apply_rotation(Vector3(BOOST * boost_multiplier, 0, 0)))
 		left_rocket_light.light_energy = lerp(left_rocket_light.light_energy, 16, 0.5)
 
 	top_rocket_particles.emitting = Input.is_action_pressed("ui_up")
