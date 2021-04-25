@@ -20,7 +20,7 @@ size = 32
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 60
+size = 24
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -42,6 +42,8 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -40 )
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+axis_lock_angular_x = true
+axis_lock_angular_y = true
 
 [node name="Boulders" type="Spatial" parent="."]
 script = ExtResource( 4 )
@@ -64,11 +66,10 @@ margin_right = 810.0
 margin_bottom = 972.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/TitleScreen"]
-margin_top = 874.0
 margin_right = 405.0
-margin_bottom = 972.0
+margin_bottom = 98.0
 size_flags_horizontal = 0
-size_flags_vertical = 8
+size_flags_vertical = 0
 
 [node name="Instructions" type="Label" parent="UI/TitleScreen/VBoxContainer"]
 margin_right = 405.0
@@ -92,29 +93,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameOver" type="CenterContainer" parent="UI"]
+[node name="GameOver" type="MarginContainer" parent="UI"]
 margin_right = 810.0
 margin_bottom = 972.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOver"]
-margin_left = 184.0
-margin_top = 419.0
-margin_right = 626.0
-margin_bottom = 552.0
+margin_right = 432.0
+margin_bottom = 83.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="Title" type="Label" parent="UI/GameOver/VBoxContainer"]
-margin_right = 442.0
-margin_bottom = 84.0
+margin_right = 432.0
+margin_bottom = 34.0
 custom_fonts/font = SubResource( 3 )
-custom_constants/line_spacing = -50
 text = "ESCAPE FAILED"
-align = 1
 valign = 1
 
 [node name="Instructions" type="Label" parent="UI/GameOver/VBoxContainer"]
-margin_top = 88.0
-margin_right = 442.0
-margin_bottom = 133.0
+margin_top = 38.0
+margin_right = 432.0
+margin_bottom = 83.0
 custom_fonts/font = SubResource( 2 )
 text = "PRESS SPACE TO TRY AGAIN"
 align = 1
@@ -124,17 +123,15 @@ __meta__ = {
 }
 
 [node name="HUD" type="VBoxContainer" parent="UI"]
-margin_left = 810.0
-margin_top = 972.0
+margin_left = 684.0
 margin_right = 810.0
-margin_bottom = 972.0
+margin_bottom = 72.0
 size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_vertical = 0
 
 [node name="Depth" type="Label" parent="UI/HUD"]
-visible = false
-margin_right = 91.0
-margin_bottom = 34.0
+margin_right = 126.0
+margin_bottom = 45.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 custom_fonts/font = ExtResource( 6 )
@@ -143,9 +140,10 @@ align = 2
 valign = 2
 
 [node name="Velocity" type="Label" parent="UI/HUD"]
-visible = false
-margin_right = 65.0
-margin_bottom = 34.0
+margin_left = 81.0
+margin_top = 49.0
+margin_right = 126.0
+margin_bottom = 72.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 custom_fonts/font = SubResource( 4 )
@@ -153,14 +151,14 @@ text = "0 m/s"
 align = 2
 valign = 2
 
-[connection signal="depth_changed" from="Ship" to="City" method="_on_Ship_depth_changed"]
-[connection signal="depth_changed" from="Ship" to="Boulders" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="Tunnel" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="Camera" method="_on_Ship_depth_changed"]
+[connection signal="depth_changed" from="Ship" to="City" method="_on_Ship_depth_changed"]
+[connection signal="depth_changed" from="Ship" to="Boulders" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="UI" method="_on_Ship_depth_changed"]
 [connection signal="destroyed" from="Ship" to="Camera" method="_on_Ship_destroyed"]
 [connection signal="destroyed" from="Ship" to="UI" method="_on_Ship_destroyed"]
-[connection signal="screen_changed" from="UI" to="City" method="_on_UI_screen_changed"]
-[connection signal="screen_changed" from="UI" to="Ship" method="_on_UI_screen_changed"]
 [connection signal="screen_changed" from="UI" to="Tunnel" method="_on_UI_screen_changed"]
+[connection signal="screen_changed" from="UI" to="Ship" method="_on_UI_screen_changed"]
 [connection signal="screen_changed" from="UI" to="Camera" method="_on_UI_screen_changed"]
+[connection signal="screen_changed" from="UI" to="City" method="_on_UI_screen_changed"]
