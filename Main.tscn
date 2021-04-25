@@ -155,6 +155,7 @@ text = "0 m/s"
 align = 2
 valign = 2
 
+[connection signal="depth_changed" from="Ship" to="Tunnel" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="Camera" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="Boulders" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="UI" method="_on_Ship_depth_changed"]

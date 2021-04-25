@@ -1,7 +1,6 @@
 extends Spatial
 
 const SEGMENT_HEIGHT = 50.0
-onready var ship = $"../Ship"
 onready var segments = [$Segment1, $Segment2, $Segment3]
 var curr_segment = 0
 
@@ -11,9 +10,9 @@ func update_segments():
 	
 func _ready():
 	update_segments()
-
-func _physics_process(delta):
-	if -ship.translation.y / SEGMENT_HEIGHT > curr_segment:
+	
+func _on_Ship_depth_changed(depth, _velocity):
+	if depth / SEGMENT_HEIGHT > curr_segment:
 		curr_segment += 1
 		update_segments()
 

@@ -1,6 +1,5 @@
 extends Camera
 
-onready var ship = $"../Ship"
 onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
 var shake_decay = 0.8
@@ -27,10 +26,10 @@ func _process(delta):
 func _on_Ship_depth_changed(depth, _velocity):
 	if depth < 0:
 		shake_amount = 1.0
-		self.translation.y = lerp(self.translation.y, ship.translation.y, 0.2)
+		self.translation.y = lerp(self.translation.y, -depth, 0.2)
 	else:
 		self.translation.z = lerp(self.translation.z, 30, 0.2)
-		self.translation.y = lerp(self.translation.y, ship.translation.y + 10, 0.2)
+		self.translation.y = lerp(self.translation.y, -depth + 10, 0.2)
 
 func _on_Ship_destroyed():
 	shake_amount = 1.0
@@ -38,4 +37,4 @@ func _on_Ship_destroyed():
 func _on_UI_screen_changed(screen):
 	if screen == "title":
 		self.translation.z = 5
-		self.translation.y = ship.translation.y
+		self.translation.y = 20
