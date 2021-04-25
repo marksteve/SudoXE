@@ -68,7 +68,7 @@ func _on_UI_screen_changed(screen):
 		reset()
 
 func reset():
-	self.translation = Vector3(0, 0, 0)
+	self.translation = Vector3(0, 20, 0)
 	self.rotation = Vector3(0, 0, 0)
 	self.linear_velocity = Vector3(0, 0, 0)
 	self.angular_velocity = Vector3(0, 0, 0)

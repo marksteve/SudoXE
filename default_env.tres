@@ -8,4 +8,4 @@ panorama = ExtResource( 1 )
 [resource]
 background_mode = 3
 background_sky = SubResource( 1 )
-background_color = Color( 0.117647, 0.109804, 0.109804, 1 )
+background_color = Color( 0.0431373, 0.0313726, 0.027451, 1 )
