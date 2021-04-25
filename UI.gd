@@ -16,7 +16,8 @@ func update_screen():
 	get_tree().paused = screen == "title"
 	title_screen.visible = screen == "title"
 	game_over.visible = screen == "game_over"
-	hud_depth.visible = screen == "game"	
+	hud_depth.visible = screen == "game"
+	hud_velocity.visible = screen == "game"
 
 func _ready():
 	randomize()
