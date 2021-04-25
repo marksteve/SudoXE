@@ -1,5 +1,6 @@
 extends RigidBody
 
+signal depth_changed(depth)
 signal destroyed
 
 const BOOST = 1.0
@@ -40,6 +41,8 @@ func _physics_process(delta):
 	bottom_rocket.firing = Input.is_action_pressed("ui_down")
 	right_rocket.firing = Input.is_action_pressed("ui_right")
 	left_rocket.firing = Input.is_action_pressed("ui_left")
+	
+	emit_signal("depth_changed", self.translation.y)
 
 func _on_Ship_body_entered(body):
 	if is_destroyed:

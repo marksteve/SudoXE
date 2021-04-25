@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
-[ext_resource path="res://Tiles.tres" type="MeshLibrary" id=3]
-[ext_resource path="res://Level.gd" type="Script" id=4]
+[ext_resource path="res://models/tunnel/tunnel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tunnel.gd" type="Script" id=4]
 [ext_resource path="res://NovaMono-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Font.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI.gd" type="Script" id=7]
@@ -29,18 +29,16 @@ script = ExtResource( 2 )
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 
-[node name="Level" type="GridMap" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-mesh_library = ExtResource( 3 )
-cell_size = Vector3( 4, 4, 4 )
-cell_center_y = false
-data = {
-"cells": PoolIntArray(  )
-}
+[node name="Tunnel" type="Spatial" parent="."]
 script = ExtResource( 4 )
-__meta__ = {
-"_editor_clip_": 0
-}
+
+[node name="Segment1" parent="Tunnel" instance=ExtResource( 3 )]
+
+[node name="Segment2" parent="Tunnel" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0 )
+
+[node name="Segment3" parent="Tunnel" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0 )
 
 [node name="UI" type="MarginContainer" parent="."]
 pause_mode = 2
@@ -142,8 +140,9 @@ text = "0.000 m"
 align = 2
 valign = 2
 
-[connection signal="destroyed" from="Ship" to="Camera" method="_on_Ship_destroyed"]
+[connection signal="depth_changed" from="Ship" to="UI" method="_on_Ship_depth_changed"]
 [connection signal="destroyed" from="Ship" to="UI" method="_on_Ship_destroyed"]
-[connection signal="screen_changed" from="UI" to="Camera" method="_on_UI_screen_changed"]
+[connection signal="destroyed" from="Ship" to="Camera" method="_on_Ship_destroyed"]
 [connection signal="screen_changed" from="UI" to="Ship" method="_on_UI_screen_changed"]
-[connection signal="screen_changed" from="UI" to="Level" method="_on_UI_screen_changed"]
+[connection signal="screen_changed" from="UI" to="Tunnel" method="_on_UI_screen_changed"]
+[connection signal="screen_changed" from="UI" to="Camera" method="_on_UI_screen_changed"]
