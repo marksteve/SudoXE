@@ -14,8 +14,8 @@ func change_screen(new_screen: String):
 	get_tree().paused = screen == "title"
 	title_screen.visible = screen == "title"
 	game_over.visible = screen == "game_over"
-	hud_depth.visible = screen == "game"
-	hud_velocity.visible = screen == "game"
+	hud_depth.visible = screen in ["game", "game_over"]
+	hud_velocity.visible = screen in ["game", "game_over"]
 
 func _ready():
 	randomize()
