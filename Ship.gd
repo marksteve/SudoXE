@@ -18,25 +18,23 @@ func _physics_process(delta):
 	if is_destroyed:
 		return
 		
-	var boost_multiplier = 10.0 if Input.is_action_pressed("ui_accept") else 1.0
-		
 	if Input.is_action_pressed("ui_up"):
 		apply_impulse(
 			apply_rotation(top_rocket.translation),
-			apply_rotation(Vector3(0, -BOOST * boost_multiplier, 0)))
+			apply_rotation(Vector3(0, -BOOST, 0)))
 	elif Input.is_action_pressed("ui_down"):
 		apply_impulse(
 			apply_rotation(bottom_rocket.translation),
-			apply_rotation(Vector3(0, BOOST * boost_multiplier, 0)))
+			apply_rotation(Vector3(0, BOOST, 0)))
 		
 	if Input.is_action_pressed("ui_right"):
 		apply_impulse(
 			apply_rotation(right_rocket.translation),
-			apply_rotation(Vector3(-BOOST * boost_multiplier, 0, 0)))
+			apply_rotation(Vector3(-BOOST, 0, 0)))
 	elif Input.is_action_pressed("ui_left"):
 		apply_impulse(
 			apply_rotation(left_rocket.translation),
-			apply_rotation(Vector3(BOOST * boost_multiplier, 0, 0)))
+			apply_rotation(Vector3(BOOST, 0, 0)))
 
 	top_rocket.firing = Input.is_action_pressed("ui_up")
 	bottom_rocket.firing = Input.is_action_pressed("ui_down")
