@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://models/explosion/explosion.tscn" type="PackedScene" id=9]
 [ext_resource path="res://models/City.gd" type="Script" id=10]
 [ext_resource path="res://default_env.tres" type="Environment" id=11]
+[ext_resource path="res://sounds/bg.mp3" type="AudioStream" id=12]
+[ext_resource path="res://BGM.gd" type="Script" id=13]
+[ext_resource path="res://sounds/intro_explode.wav" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 5 )
@@ -39,6 +42,9 @@ script = ExtResource( 10 )
 
 [node name="Explosion" parent="City" instance=ExtResource( 9 )]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -40 )
+
+[node name="SFXExplode" type="AudioStreamPlayer" parent="City"]
+stream = ExtResource( 14 )
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
@@ -151,14 +157,20 @@ text = "0 m/s"
 align = 2
 valign = 2
 
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+script = ExtResource( 13 )
+
+[connection signal="depth_changed" from="Ship" to="Boulders" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="Tunnel" method="_on_Ship_depth_changed"]
+[connection signal="depth_changed" from="Ship" to="UI" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="Camera" method="_on_Ship_depth_changed"]
 [connection signal="depth_changed" from="Ship" to="City" method="_on_Ship_depth_changed"]
-[connection signal="depth_changed" from="Ship" to="Boulders" method="_on_Ship_depth_changed"]
-[connection signal="depth_changed" from="Ship" to="UI" method="_on_Ship_depth_changed"]
-[connection signal="destroyed" from="Ship" to="Camera" method="_on_Ship_destroyed"]
 [connection signal="destroyed" from="Ship" to="UI" method="_on_Ship_destroyed"]
+[connection signal="destroyed" from="Ship" to="Camera" method="_on_Ship_destroyed"]
 [connection signal="screen_changed" from="UI" to="Tunnel" method="_on_UI_screen_changed"]
-[connection signal="screen_changed" from="UI" to="Ship" method="_on_UI_screen_changed"]
+[connection signal="screen_changed" from="UI" to="BGM" method="_on_UI_screen_changed"]
 [connection signal="screen_changed" from="UI" to="Camera" method="_on_UI_screen_changed"]
+[connection signal="screen_changed" from="UI" to="Ship" method="_on_UI_screen_changed"]
 [connection signal="screen_changed" from="UI" to="City" method="_on_UI_screen_changed"]

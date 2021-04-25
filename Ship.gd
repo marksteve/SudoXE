@@ -9,6 +9,7 @@ onready var top_rocket = $TopRocket
 onready var bottom_rocket = $BottomRocket
 onready var right_rocket = $RightRocket
 onready var left_rocket = $LeftRocket
+onready var sfx_destroy = $SFXDestroy
 var is_destroyed = false
 
 func apply_rotation(position: Vector3):
@@ -49,7 +50,8 @@ func _physics_process(delta):
 func _on_Ship_body_entered(body):
 	if is_destroyed:
 		return
-
+	
+	sfx_destroy.play(1)
 	emit_signal("destroyed")
 	is_destroyed = true
 	
