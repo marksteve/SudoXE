@@ -17,7 +17,6 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="ship" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 0 )
 
 [node name="RightRocket" parent="." instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.25, 0.1, 0 )

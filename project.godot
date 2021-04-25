@@ -18,11 +18,16 @@ config/icon="res://icon.png"
 
 window/size/width=900
 window/size/height=1080
+window/handheld/orientation="portrait"
 window/stretch/aspect="keep_height"
 
 [global]
 
 theme=false
+
+[gui]
+
+theme/custom="res://Theme.tres"
 
 [physics]
 

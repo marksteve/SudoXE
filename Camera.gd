@@ -25,7 +25,7 @@ func _process(delta):
 		shake_amount = max(shake_amount - shake_decay * delta, 0)
 
 func _on_Ship_depth_changed(depth, _velocity):
-	if depth < 0:
+	if depth < 50:
 		shake_amount = 1.0
 		self.translation.y = lerp(self.translation.y, -depth, 0.2)
 	else:
