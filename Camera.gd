@@ -1,5 +1,6 @@
 extends Camera
 
+const LEVEL_DEPTH = 1000
 onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
 var shake_decay = 0.8
@@ -30,6 +31,7 @@ func _on_Ship_depth_changed(depth, _velocity):
 	else:
 		self.translation.z = lerp(self.translation.z, 30, 0.2)
 		self.translation.y = lerp(self.translation.y, -depth + 10, 0.2)
+	self.environment.background_energy = max(1.0 - depth / LEVEL_DEPTH / 10, 0)
 
 func _on_Ship_destroyed():
 	shake_amount = 1.0
