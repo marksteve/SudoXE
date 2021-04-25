@@ -27,7 +27,7 @@ func _process(delta):
 		shake_amount = max(shake_amount - shake_decay * delta, 0)
 
 func _on_Ship_depth_changed(depth, _velocity):
-	if depth > -10:
+	if depth < 10:
 		shake_amount = 1.0
 
 func _on_Ship_destroyed():

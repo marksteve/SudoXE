@@ -3,6 +3,7 @@ extends RigidBody
 signal depth_changed(depth, velocity)
 signal destroyed
 
+const TERMINAL_VELOCITY = -100
 const BOOST = 1.0
 onready var top_rocket = $TopRocket
 onready var bottom_rocket = $BottomRocket
@@ -42,7 +43,10 @@ func _physics_process(delta):
 	right_rocket.firing = Input.is_action_pressed("ui_right")
 	left_rocket.firing = Input.is_action_pressed("ui_left")
 	
-	emit_signal("depth_changed", self.translation.y, -self.linear_velocity.y)
+	if self.linear_velocity.y < TERMINAL_VELOCITY:
+		self.linear_velocity.y = TERMINAL_VELOCITY
+	
+	emit_signal("depth_changed", -self.translation.y, -self.linear_velocity.y)
 
 func _on_Ship_body_entered(body):
 	if is_destroyed:
