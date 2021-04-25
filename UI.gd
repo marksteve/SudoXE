@@ -4,7 +4,8 @@ signal screen_changed(screen)
 
 onready var title_screen = $TitleScreen
 onready var game_over = $GameOver
-onready var depth_label = $Depth
+onready var hud_depth = $HUD/Depth
+onready var hud_velocity = $HUD/Velocity
 var screen = ""
 
 func change_screen(new_screen: String):
@@ -15,7 +16,7 @@ func update_screen():
 	get_tree().paused = screen == "title"
 	title_screen.visible = screen == "title"
 	game_over.visible = screen == "game_over"
-	depth_label.visible = screen == "game"	
+	hud_depth.visible = screen == "game"	
 
 func _ready():
 	randomize()
@@ -30,8 +31,9 @@ func _input(event):
 			change_screen("title")
 		call_deferred("update_screen")
 
-func _on_Ship_depth_changed(depth):
-	depth_label.text = "%.3f m" % depth
+func _on_Ship_depth_changed(depth, velocity):
+	hud_depth.text = "%.3f m" % depth
+	hud_velocity.text = "%3.f m/s" % velocity
 
 func _on_Ship_destroyed():
 	game_over.visible = true

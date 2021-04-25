@@ -21,10 +21,14 @@ func _ready():
 
 func _process(delta):
 	self.translation.z = lerp(self.translation.z, 30, 0.2)
-	self.translation.y = lerp(self.translation.y, ship.translation.y - 10, 0.2)
+	self.translation.y = lerp(self.translation.y, ship.translation.y + 10, 0.2)
 	if shake_amount > 0.0:
 		shake(shake_amount)
 		shake_amount = max(shake_amount - shake_decay * delta, 0)
+
+func _on_Ship_depth_changed(depth, _velocity):
+	if depth > -10:
+		shake_amount = 1.0
 
 func _on_Ship_destroyed():
 	shake_amount = 1.0
