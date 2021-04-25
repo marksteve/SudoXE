@@ -1,6 +1,7 @@
 extends Spatial
 
 const LEVEL_DEPTH = 1000
+onready var ship = $"../Ship" # TODO: refactor
 onready var boulders = [
 	preload("res://Boulder1.tscn"),
 	preload("res://Boulder2.tscn"),
@@ -18,7 +19,7 @@ func _on_Ship_depth_changed(depth, velocity):
 		return
 	if get_child_count() == 0:
 		var boulder: RigidBody = boulders[randi() % len(boulders)].instance()
-		boulder.translation.x = randf() * 30.0 - 20.0
+		boulder.translation.x = ship.translation.x + randf() * 4.0 - 2.0
 		boulder.translation.y = -(depth - 50.0)
 		boulder.angular_velocity = Vector3(
 			rand_velocity(PI),
