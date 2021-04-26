@@ -10,6 +10,7 @@ onready var bottom_rocket = $BottomRocket
 onready var right_rocket = $RightRocket
 onready var left_rocket = $LeftRocket
 onready var sfx_destroy = $SFXDestroy
+onready var sfx_rocket = $SFXRocket
 var is_destroyed = false
 
 func apply_rotation(position: Vector3):

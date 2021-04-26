@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Rocket.gd" type="Script" id=1]
+[ext_resource path="res://sounds/rocket_loop.tres" type="AudioStream" id=2]
+[ext_resource path="res://sounds/rocket.tres" type="AudioStream" id=3]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.499489 ), 0.0, 0.0, 0, 0, Vector2( 0.690789, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -60,3 +62,9 @@ light_color = Color( 1, 0.768627, 0.478431, 1 )
 light_energy = 0.0
 shadow_enabled = true
 omni_range = 15.0
+
+[node name="SFXRocket" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="SFXRocketEnd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
