@@ -23,7 +23,7 @@ func destroy():
 	destroyed = true
 
 func _process(delta):
-	if prev_firing != firing:
+	if sfx_rocket and prev_firing != firing:
 		if prev_firing:
 			sfx_rocket.stop()
 			sfx_rocket_end.play(6.5)
@@ -38,4 +38,4 @@ func _process(delta):
 		omni_light.light_energy = lerp(omni_light.light_energy, light_energy, 0.5)
 	if particles:
 		particles.emitting = firing or destroyed
-		particles.process_material.spread = 180 if destroyed else 30
+		particles.process_material.spread = 180 if destroyed else 15
