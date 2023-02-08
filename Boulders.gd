@@ -20,7 +20,7 @@ func _on_Ship_depth_changed(depth, velocity):
 	if get_child_count() == 0:
 		var boulder: RigidBody = boulders[randi() % len(boulders)].instance()
 		boulder.translation.x = ship.translation.x + randf() * 4.0 - 2.0
-		boulder.translation.y = -(depth - 50.0)
+		boulder.translation.y = -(depth - 100.0)
 		boulder.angular_velocity = Vector3(
 			rand_velocity(PI),
 			rand_velocity(PI),

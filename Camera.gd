@@ -29,8 +29,8 @@ func _on_Ship_depth_changed(depth, _velocity):
 		shake_amount = 1.0
 		self.translation.y = lerp(self.translation.y, -depth, 0.2)
 	else:
-		self.translation.z = lerp(self.translation.z, 30, 0.2)
-		self.translation.y = lerp(self.translation.y, -depth + 10, 0.2)
+		self.translation.z = lerp(self.translation.z, 50, 0.2)
+		self.translation.y = lerp(self.translation.y, -depth, 0.2)
 	self.environment.background_energy = max(1.0 - depth / LEVEL_DEPTH / 10, 0)
 
 func _on_Ship_destroyed():

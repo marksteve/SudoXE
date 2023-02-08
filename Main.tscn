@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
 [ext_resource path="res://Tunnel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Boulders.gd" type="Script" id=4]
 [ext_resource path="res://NovaMono-Regular.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://ui/start_pressed.png" type="Texture" id=6]
 [ext_resource path="res://UI.gd" type="Script" id=7]
 [ext_resource path="res://models/city/city.tscn" type="PackedScene" id=8]
 [ext_resource path="res://models/explosion/explosion.tscn" type="PackedScene" id=9]
@@ -14,20 +14,33 @@
 [ext_resource path="res://sounds/bg.mp3" type="AudioStream" id=12]
 [ext_resource path="res://BGM.gd" type="Script" id=13]
 [ext_resource path="res://sounds/intro_explode.wav" type="AudioStream" id=14]
+[ext_resource path="res://ui/booster.png" type="Texture" id=15]
+[ext_resource path="res://ui/start.png" type="Texture" id=16]
+[ext_resource path="res://ui/booster_pressed.png" type="Texture" id=17]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=8]
+size = 64
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 32
+[sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 24
+size = 48
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 420.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 320.0
 
 [node name="Main" type="Spatial"]
 
@@ -63,101 +76,224 @@ anchor_top = 0.05
 anchor_right = 0.95
 anchor_bottom = 0.95
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TitleScreen" type="MarginContainer" parent="UI"]
-margin_right = 810.0
-margin_bottom = 972.0
+margin_right = 486.0
+margin_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/TitleScreen"]
-margin_right = 432.0
-margin_bottom = 150.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+margin_right = 486.0
+margin_bottom = 1080.0
 
-[node name="Instructions" type="Label" parent="UI/TitleScreen/VBoxContainer"]
-margin_right = 432.0
-margin_bottom = 101.0
-custom_fonts/font = SubResource( 1 )
-text = "SudoXE: the last pod that can bring you down
-to the core shelter. Will you be able to escape?
-
-USE YOUR ARROW KEYS TO CONTROL ITS THRUSTERS"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Instructions2" type="Label" parent="UI/TitleScreen/VBoxContainer"]
-margin_top = 105.0
-margin_right = 432.0
-margin_bottom = 150.0
-custom_fonts/font = SubResource( 2 )
-text = "PRESS SPACE TO START"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GameOver" type="MarginContainer" parent="UI"]
-margin_right = 810.0
-margin_bottom = 972.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOver"]
-margin_right = 432.0
-margin_bottom = 83.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Title" type="Label" parent="UI/GameOver/VBoxContainer"]
-margin_right = 432.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 3 )
-text = "ESCAPE FAILED"
-valign = 1
-
-[node name="Instructions" type="Label" parent="UI/GameOver/VBoxContainer"]
-margin_top = 38.0
-margin_right = 432.0
-margin_bottom = 83.0
-custom_fonts/font = SubResource( 2 )
-text = "PRESS SPACE TO TRY AGAIN"
+[node name="Title" type="Label" parent="UI/TitleScreen/VBoxContainer"]
+margin_right = 486.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 8 )
+text = "SudoXE"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HUD" type="VBoxContainer" parent="UI"]
-margin_left = 684.0
-margin_right = 810.0
-margin_bottom = 72.0
-size_flags_horizontal = 8
+[node name="Instructions" type="Label" parent="UI/TitleScreen/VBoxContainer"]
+margin_top = 94.0
+margin_right = 486.0
+margin_bottom = 202.0
+text = "The last pod that can bring
+you down to the core shelter.
+Will you be able to escape?"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="UI/TitleScreen/VBoxContainer"]
+margin_top = 206.0
+margin_right = 486.0
+margin_bottom = 863.0
+size_flags_vertical = 3
+
+[node name="Instructions2" type="Label" parent="UI/TitleScreen/VBoxContainer"]
+margin_top = 867.0
+margin_right = 486.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 0, 213 )
+custom_fonts/font = SubResource( 10 )
+text = "START"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="MarginContainer" parent="UI"]
+margin_right = 486.0
+margin_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOver"]
+margin_right = 486.0
+margin_bottom = 1080.0
+alignment = 1
+
+[node name="Title" type="Label" parent="UI/GameOver/VBoxContainer"]
+margin_right = 486.0
+margin_bottom = 863.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "ESCAPE FAILED"
+align = 1
+valign = 1
+
+[node name="Instructions" type="Label" parent="UI/GameOver/VBoxContainer"]
+margin_top = 867.0
+margin_right = 486.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 0, 213 )
+custom_fonts/font = SubResource( 9 )
+text = "AGAIN"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="HBoxContainer" parent="UI"]
+margin_right = 486.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 
 [node name="Depth" type="Label" parent="UI/HUD"]
 margin_right = 126.0
 margin_bottom = 45.0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = SubResource( 11 )
 text = "0.000 m"
-align = 2
-valign = 2
+
+[node name="Spacer" type="Control" parent="UI/HUD"]
+margin_left = 130.0
+margin_right = 417.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
 
 [node name="Velocity" type="Label" parent="UI/HUD"]
-margin_left = 81.0
-margin_top = 49.0
-margin_right = 126.0
-margin_bottom = 72.0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-custom_fonts/font = SubResource( 4 )
+margin_left = 421.0
+margin_top = 5.0
+margin_right = 486.0
+margin_bottom = 39.0
 text = "0 m/s"
-align = 2
-valign = 2
+
+[node name="Controls" type="MarginContainer" parent="UI"]
+margin_right = 486.0
+margin_bottom = 1080.0
+
+[node name="Buttons" type="MarginContainer" parent="UI/Controls"]
+margin_left = 136.0
+margin_top = 867.0
+margin_right = 349.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 213, 213 )
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Start" type="Control" parent="UI/Controls/Buttons"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 149.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 85, 85 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Start" type="TouchScreenButton" parent="UI/Controls/Buttons/Start"]
+scale = Vector2( 0.167, 0.167 )
+normal = ExtResource( 16 )
+pressed = ExtResource( 6 )
+shape = SubResource( 6 )
+action = "ui_accept"
+
+[node name="Boosters" type="Control" parent="UI/Controls/Buttons"]
+margin_right = 213.0
+margin_bottom = 213.0
+
+[node name="Top" type="Control" parent="UI/Controls/Buttons/Boosters"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -42.5
+margin_right = 42.5
+margin_bottom = 85.0
+rect_min_size = Vector2( 85, 85 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Top" type="TouchScreenButton" parent="UI/Controls/Buttons/Boosters/Top"]
+scale = Vector2( 0.167, 0.167 )
+normal = ExtResource( 15 )
+pressed = ExtResource( 17 )
+shape = SubResource( 7 )
+action = "ui_up"
+
+[node name="Left" type="Control" parent="UI/Controls/Buttons/Boosters"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -42.5
+margin_right = 85.0
+margin_bottom = 42.5
+rect_min_size = Vector2( 85, 85 )
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Left" type="TouchScreenButton" parent="UI/Controls/Buttons/Boosters/Left"]
+position = Vector2( 0, 85 )
+rotation = -1.5708
+scale = Vector2( 0.167, 0.167 )
+normal = ExtResource( 15 )
+pressed = ExtResource( 17 )
+shape = SubResource( 7 )
+action = "ui_left"
+
+[node name="Right" type="Control" parent="UI/Controls/Buttons/Boosters"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -85.0
+margin_top = -42.5
+margin_bottom = 42.5
+rect_min_size = Vector2( 85, 85 )
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Right" type="TouchScreenButton" parent="UI/Controls/Buttons/Boosters/Right"]
+position = Vector2( 85, 0 )
+rotation = 1.5708
+scale = Vector2( 0.167, 0.167 )
+normal = ExtResource( 15 )
+pressed = ExtResource( 17 )
+shape = SubResource( 7 )
+action = "ui_right"
+
+[node name="Bottom" type="Control" parent="UI/Controls/Buttons/Boosters"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.5
+margin_top = -85.0
+margin_right = 42.5
+rect_min_size = Vector2( 85, 85 )
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Bottom" type="TouchScreenButton" parent="UI/Controls/Buttons/Boosters/Bottom"]
+position = Vector2( 85, 85 )
+rotation = -3.14159
+scale = Vector2( 0.167, 0.167 )
+normal = ExtResource( 15 )
+pressed = ExtResource( 17 )
+shape = SubResource( 7 )
+action = "ui_down"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )

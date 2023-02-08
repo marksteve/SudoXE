@@ -6,3 +6,9 @@
 
 [node name="Cube" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="OmniLight" type="OmniLight" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+light_color = Color( 1, 0.537255, 0, 1 )
+light_energy = 2.0
+omni_range = 4.0

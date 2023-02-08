@@ -6,6 +6,8 @@ onready var title_screen = $TitleScreen
 onready var game_over = $GameOver
 onready var hud_depth = $HUD/Depth
 onready var hud_velocity = $HUD/Velocity
+onready var controls_start = $Controls/Buttons/Start
+onready var controls_boosters = $Controls/Buttons/Boosters
 var screen = ""
 
 func change_screen(new_screen: String):
@@ -16,6 +18,8 @@ func change_screen(new_screen: String):
 	game_over.visible = screen == "game_over"
 	hud_depth.visible = screen in ["game", "game_over"]
 	hud_velocity.visible = screen in ["game", "game_over"]
+	controls_start.visible = screen in ["title", "game_over"]
+	controls_boosters.visible = screen == "game"
 
 func _ready():
 	randomize()

@@ -1,7 +1,7 @@
 extends Spatial
 
 const SEGMENT_HEIGHT = 50.0
-onready var segments = [$Segment1, $Segment2, $Segment3]
+onready var segments = [$Segment1, $Segment2, $Segment3, $Segment4]
 var curr_segment = 0
 
 func update_segments():
